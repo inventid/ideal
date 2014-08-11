@@ -26,6 +26,14 @@ We feel contributions from the community are extremely worthwhile. If you use Id
 
 If there are any issues related to your changes, be sure to reference to those. Additionally we use the `develop` branch, so create a pull request to that branch and not to `master`.
 
+Additionally we always use [vagrant](http://www.vagrantup.com) for our development. To do the same, you can do the following:
+
+1. Make sure to have [vagrant](http://www.vagrantup.com) installed.
+1. Clone the repository
+1. Open a terminal / shell script and nagivate to the place where you cloned the repository
+1. Simply enter `vagrant up`
+1. The Vagrant machine provisions and you can easily work with us. Enter `vagrant ssh` to get shell access to the machine. In case you are done with it, simply enter `vagrant destroy`. You won't lose any changes to your git repository when this happens.
+
 ### Collaborators
 
 We would like to thank the developers which contributed to Ideal, both big and small.
