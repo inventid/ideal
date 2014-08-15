@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AcquirerTrxReq xmlns="http://www.idealdesk.com/ideal/messages/mer-acq/3.3.1" version="3.3.1">
+  <createDateTimestamp>created_at_timestamp</createDateTimestamp>
+  <Issuer>
+    <issuerID>issuer_id</issuerID>
+  </Issuer>
+  <Merchant>
+    <merchantID>002054205</merchantID>
+    <subID>0</subID>
+    <merchantReturnURL>return_url</merchantReturnURL>
+  </Merchant>
+  <Transaction>
+    <purchaseID>purchase_id</purchaseID>
+    <amount>amount</amount>
+    <currency>EUR</currency>
+    <expirationPeriod>expiration_period</expirationPeriod>
+    <language>nl</language>
+    <description>description</description>
+    <entranceCode>entrance_code</entranceCode>
+  </Transaction>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <DigestValue>digest_value</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>signature_value</SignatureValue>
+    <KeyInfo>
+      <KeyName>fingerprint</KeyName>
+    </KeyInfo>
+  </Signature>
+</AcquirerTrxReq>

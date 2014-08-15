@@ -1,0 +1,9 @@
+# You can also paste the contents of the key and certificates here,
+# if you want to do so remove the “_file” part of the keys.
+default:
+  acquirer: rabobank
+  merchant_id: '002054205'
+  passphrase: wachtwoord
+  private_key_file: ../certs/bestandsnaam.key
+  private_certificate_file: ../certs/bestandsnaam.cer
+  ideal_certificate_file: ../certs/ideal.cer

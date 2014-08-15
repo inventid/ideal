@@ -16,6 +16,13 @@ And now you can use it too!
 
 _I need to elaborate on this once I acutally built something_
 
+### Certificates
+
+````bash
+openssl genrsa -aes128 -out bestandsnaam.key -passout pass:wachtwoord 2048
+openssl req -x509 -new -key bestandsnaam.key -passin pass:wachtwoord -days 1825 -out bestandsnaam.cer
+````
+
 ### How to suggest improvements?
 
 We are still actively developing Ideal for our internal use, but we would already love to hear your feedback. In case you have some great ideas, you may just [open an issue](https://github.com/inventid/ideal/issues/new). Be sure to check beforehand whether the same issue does not already exist.
