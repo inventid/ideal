@@ -34,4 +34,3 @@ build/
 .rvmrc
 
 .vagrant/
-certs/

@@ -1,7 +1,13 @@
 language: ruby
 rvm:
-  - 2.1.2
-  - 2.1.0
-  - 2.0.0
-
-script: "bundle exec rspec test/test.rb"
+- 2.1.2
+- 2.1.0
+- 2.0.0
+script: bundle exec rspec test/test.rb
+notifications:
+  email: false
+  hipchat:
+    rooms:
+      secure: Ux4YUNvJarbFRjJ3wMUHYhgRkDNzZP1s7Tc5eccf9DYkbZyodgFN4etcDwm5DdIEQbD9ORpsjfcr08D7Ggn7zEw8Ka+RcuE2IH3Ym8dkEHKEfxdJ0sw2FboJwiFeb184UZNFIbREygnzsr/9KvTN+oCgFiB1y7kDZRhX5CFBsUg=
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
