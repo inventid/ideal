@@ -135,7 +135,7 @@ Additionally we always use [vagrant](http://www.vagrantup.com) for our developme
 1. Clone the repository
 1. Open a terminal / shell script and nagivate to the place where you cloned the repository
 1. Simply enter `vagrant up`
-1. Provisioning takes around 5 minutes on my PC. If you want it to be faster you can use the userConfig.json file in the root and override the specific settings for memory and CPU.
+1. Provisioning takes around 5 minutes on my PC. If you want it to be faster you can use the `userConfig.json` file in the root and override the specific settings for memory and CPU.
 1. The Vagrant machine provisions and you can easily work with us. Enter `vagrant ssh` to get shell access to the machine. In case you are done with it, simply enter `vagrant destroy`. You won't lose any changes to your git repository when this happens.
 
 ## Collaborators
