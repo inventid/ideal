@@ -20,7 +20,7 @@ module Ideal
       doc.remove_namespaces!
       @response = doc.root
       @success = !error_occured?
-      @test = options[:test]?options[:test]:false
+      @test = options[:test] ? options[:test] : false
     end
 
     # Returns whether we're running in test mode
@@ -60,12 +60,17 @@ module Ideal
     # * +AP+ - <tt>:application</tt>
     def error_type
       unless success?
-        case error_code[0,2]
-        when 'IX' then :xml
-        when 'SO' then :system
-        when 'SE' then :security
-        when 'BR' then :value
-        when 'AP' then :application
+        case error_code[0, 2]
+          when 'IX' then
+            :xml
+          when 'SO' then
+            :system
+          when 'SE' then
+            :security
+          when 'BR' then
+            :value
+          when 'AP' then
+            :application
         end
       end
     end
@@ -182,7 +187,7 @@ module Ideal
       canonical = node.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
     end
 
-    def signature     
+    def signature
       Base64.decode64(text('//SignatureValue'))
     end
   end
@@ -215,7 +220,7 @@ module Ideal
     # verified.
     def verified?
       signed_document = SignedDocument.new(@body)
-      @verified ||= signed_document.validate(Ideal::Gateway.ideal_certificate)  
+      @verified ||= signed_document.validate(Ideal::Gateway.ideal_certificate)
     end
 
     # Returns the bankaccount number when the transaction was successful.
@@ -260,9 +265,14 @@ module Ideal
     #
     #   gateway.issuers.list # => [{ :id => '1006', :name => 'ABN AMRO Bank' }]
     def list
-      @response.xpath("//Issuer").map.with_index do |issuer, i|
-        { :id => issuer.xpath("//issuerID")[i].text(), :name => issuer.xpath("//issuerName")[i].text() }
-      end
+      list = Array.new
+      @response.xpath(".//Country").each { |country|
+        country_name = country.xpath(".//countryNames").first.text()
+        country.xpath(".//Issuer").each { |issuer|
+          list << {:id => issuer.xpath(".//issuerID").first.text(), :country => country_name, :name => issuer.xpath(".//issuerName").first.text()}
+        }
+      }
+      list
     end
   end
 end

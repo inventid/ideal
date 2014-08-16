@@ -6,10 +6,12 @@
   </Acquirer>
   <Directory>
     <directoryDateTimeStamp>2004-11-10T10:15:12.145Z</directoryDateTimeStamp>
-    <Issuer>
-      <issuerID>1006</issuerID>
-      <issuerName>ABN AMRO Bank</issuerName>
-      <issuerList>Short</issuerList>
-    </Issuer>
+    <Country>
+      <countryNames>RogierIsGaafLand</countryNames>
+      <Issuer>
+        <issuerID>1006</issuerID>
+        <issuerName>ABN AMRO Bank</issuerName>
+      </Issuer>
+    </Country>
   </Directory>
 </DirectoryRes>

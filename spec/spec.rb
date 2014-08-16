@@ -391,28 +391,28 @@ class ResponseTest
         allow(gateway).to receive(:build_directory_request).and_return('the request body')
         expect(gateway).to receive(:ssl_post).with(gateway.request_url, 'the request body').and_return(xml)
 
-        expected_issuers = [{:id => '1006', :name => 'ABN AMRO Bank'}]
+        expected_issuers = [{:id => '1006', :country => 'RogierIsGaafLand', :name => 'ABN AMRO Bank'}]
 
         directory_response = gateway.issuers
         expect(directory_response).to be_a Ideal::DirectoryResponse
-        expect(expected_issuers).to eq(directory_response.list)
+        expect(directory_response.list).to eq(expected_issuers)
 
         file = File.join(File.dirname(__FILE__), 'test_xml/large_directory_response.xml')
         xml = File.read(file)
 
         expected_issuers = [
-            {:id => '1006', :name => 'ABN AMRO Bank'},
-            {:id => '1003', :name => 'Postbank'},
-            {:id => '1005', :name => 'Rabobank'},
-            {:id => '1017', :name => 'Asr bank'},
-            {:id => '1023', :name => 'Van Lanschot'}
+            {:id => '1006', :country => 'JoostIsCool', :name => 'ABN AMRO Bank'},
+            {:id => '1003', :country => 'JoostIsCool', :name => 'Postbank'},
+            {:id => '1005', :country => 'JoostIsCool', :name => 'Rabobank'},
+            {:id => '1017', :country => 'XmlIsCoolOhNee', :name => 'Asr bank'},
+            {:id => '1023', :country => 'XmlIsCoolOhNee', :name => 'Van Lanschot'}
         ]
 
         expect(gateway).to receive(:ssl_post).with(gateway.request_url, 'the request body').and_return(xml)
 
         directory_response = gateway.issuers
         expect(directory_response).to be_a Ideal::DirectoryResponse
-        expect(expected_issuers).to eq(directory_response.list)
+        expect(directory_response.list).to eq(expected_issuers)
       end
     end
 
