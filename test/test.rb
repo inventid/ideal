@@ -1,10 +1,12 @@
+require 'coveralls'
+
+Coveralls.wear!
+
 require 'rubygems'
 require 'ideal'
 require 'yaml'
 require 'mocha'
-require 'coveralls'
 
-Coveralls.wear!
 
 def strip_whitespace(str)
   str.gsub('/\s/m', '')
