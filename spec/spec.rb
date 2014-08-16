@@ -227,7 +227,7 @@ class XmlTest
             entrance_code: 'entrance_code'
         }
         xml = @gateway.send(:build_transaction_request, 'amount', options)
-        expected_response = Nokogiri::XML.parse(File.read(File.join(File.dirname(__FILE__), 'expectationXml/transaction_request.xml')))
+        expected_response = Nokogiri::XML.parse(File.read(File.join(File.dirname(__FILE__), 'expectation_xml/transaction_request.xml')))
         actual_response = Nokogiri::XML.parse(xml)
         expect(actual_response.to_s).to eq(expected_response.to_s)
       end
@@ -239,7 +239,7 @@ class XmlTest
             transaction_id: 'transaction_id'
         }
         xml = @gateway.send(:build_status_request, options)
-        expected_response = Nokogiri::XML.parse(File.read(File.join(File.dirname(__FILE__), 'expectationXml/status_request.xml')))
+        expected_response = Nokogiri::XML.parse(File.read(File.join(File.dirname(__FILE__), 'expectation_xml/status_request.xml')))
         actual_response = Nokogiri::XML.parse(xml)
         expect(actual_response.to_s).to eq(expected_response.to_s)
       end
@@ -248,7 +248,7 @@ class XmlTest
     describe Ideal do
       it 'creates a correct DirectoryRequestXml' do
         xml = @gateway.send(:build_directory_request)
-        expected_response = Nokogiri::XML.parse(File.read(File.join(File.dirname(__FILE__), 'expectationXml/directory_request.xml')))
+        expected_response = Nokogiri::XML.parse(File.read(File.join(File.dirname(__FILE__), 'expectation_xml/directory_request.xml')))
         actual_response = Nokogiri::XML.parse(xml)
         expect(actual_response.to_s).to eq(expected_response.to_s)
       end
@@ -329,14 +329,14 @@ class ResponseTest
   describe Ideal do
 
     before(:each) do
-      file = File.join(File.dirname(__FILE__), 'testXml/large-directory-response.xml')
+      file = File.join(File.dirname(__FILE__), 'test_xml/large_directory_response.xml')
       @xml = File.read(file)
       @response = Ideal::Response.new(@xml)
     end
 
     describe '#test' do
       it 'should set the environment correctly on instantiation or use the default' do
-        file = File.join(File.dirname(__FILE__), 'testXml/large-directory-response.xml')
+        file = File.join(File.dirname(__FILE__), 'test_xml/large_directory_response.xml')
         xml = File.read(file)
         expect(Ideal::Response.new(xml, :test => true).test?).to be true
         expect(Ideal::Response.new(xml, :test => false).test?).to be false
@@ -346,7 +346,7 @@ class ResponseTest
 
     describe 'response' do
       it 'return a correct response body' do
-        file = File.join(File.dirname(__FILE__), 'testXml/large-directory-response.xml')
+        file = File.join(File.dirname(__FILE__), 'test_xml/large_directory_response.xml')
         xml = File.read(file)
         response = Ideal::Response.new(xml)
         expect(response.instance_variable_get(:@response).to_s).to eq(Nokogiri::XML.parse(xml).remove_namespaces!.root.to_s)
@@ -358,7 +358,7 @@ class ResponseTest
 
     describe 'error' do
       it 'gives an error if the response is incorrect' do
-        file = File.join(File.dirname(__FILE__), 'testXml/error-response.xml')
+        file = File.join(File.dirname(__FILE__), 'test_xml/error_response.xml')
         xml = File.read(file)
         response = Ideal::Response.new(xml)
 
@@ -385,7 +385,7 @@ class ResponseTest
       it 'returns the list of issuers' do
         gateway = Ideal::Gateway.new
 
-        file = File.join(File.dirname(__FILE__), 'testXml/small-directory-response.xml')
+        file = File.join(File.dirname(__FILE__), 'test_xml/small_directory_response.xml')
         xml = File.read(file)
 
         allow(gateway).to receive(:build_directory_request).and_return('the request body')
@@ -397,7 +397,7 @@ class ResponseTest
         expect(directory_response).to be_a Ideal::DirectoryResponse
         expect(expected_issuers).to eq(directory_response.list)
 
-        file = File.join(File.dirname(__FILE__), 'testXml/large-directory-response.xml')
+        file = File.join(File.dirname(__FILE__), 'test_xml/large_directory_response.xml')
         xml = File.read(file)
 
         expected_issuers = [
@@ -419,7 +419,7 @@ class ResponseTest
     describe 'purchase' do
       it 'should return a valid transaction response' do
         gateway = Ideal::Gateway.new
-        file = File.join(File.dirname(__FILE__), 'testXml/transaction-response.xml')
+        file = File.join(File.dirname(__FILE__), 'test_xml/transaction_response.xml')
         xml = File.read(file)
 
         allow(gateway).to receive(:build_transaction_request).with(4321, VALID_PURCHASE_OPTIONS).and_return('the request body')
@@ -442,7 +442,7 @@ class ResponseTest
     it 'should start a transaction at the acquirer' do
 
       gateway = Ideal::Gateway.new
-      file = File.join(File.dirname(__FILE__), 'testXml/transaction-response.xml')
+      file = File.join(File.dirname(__FILE__), 'test_xml/transaction_response.xml')
       xml = File.read(file)
 
       allow(gateway).to receive(:build_transaction_request).with(4321, VALID_PURCHASE_OPTIONS).and_return('the request body')
@@ -466,7 +466,7 @@ class ResponseTest
       allow(gateway).to receive(:build_status_request).
                             with(:transaction_id => '0001023456789112').and_return('the request body')
 
-      allow(gateway).to receive(:ssl_post).with(gateway.request_url, 'the request body').and_return(File.read(File.join(File.dirname(__FILE__), 'testXml/status-response-succeeded.xml')))
+      allow(gateway).to receive(:ssl_post).with(gateway.request_url, 'the request body').and_return(File.read(File.join(File.dirname(__FILE__), 'test_xml/status_response_succeeded.xml')))
       expect(gateway.capture('0001023456789112')).to be_a Ideal::StatusResponse
 
       allow_any_instance_of(Ideal::StatusResponse).to receive(:verified?).and_return(true)
@@ -482,7 +482,7 @@ class ResponseTest
       allow(gateway).to receive(:build_status_request).
                             with(:transaction_id => '0001023456789112').and_return('the request body')
 
-      allow(gateway).to receive(:ssl_post).with(gateway.request_url, 'the request body').and_return(File.read(File.join(File.dirname(__FILE__), 'testXml/status-response-succeeded-incorrect.xml')))
+      allow(gateway).to receive(:ssl_post).with(gateway.request_url, 'the request body').and_return(File.read(File.join(File.dirname(__FILE__), 'test_xml/status_response_succeeded_incorrect.xml')))
       allow_any_instance_of(Ideal::StatusResponse).to receive(:verified?).and_return(false)
       capture_response = gateway.capture('0001023456789112')
       expect(capture_response.verified?).to be false
