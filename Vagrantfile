@@ -23,8 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.name = "ideal-local.inventid.net"
   end
 
-  memory = userConfig["memory"] || 2048
-  cpus = userConfig["cpus"] || 2
+  memory = userConfig["memory"] || 1024
+  cpus = userConfig["cpus"] || 1
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", memory, "--cpus", cpus]
