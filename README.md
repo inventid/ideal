@@ -3,8 +3,8 @@
 # Ideal
 | Branch | Build status | Code coverage |
 |---|---|---|
-| Master | | |
-| Develop | | | 
+| Master |[![Build Status](https://travis-ci.org/inventid/ideal.svg?branch=master)](https://travis-ci.org/inventid/ideal)|[![Coverage Status](http://img.shields.io/coveralls/inventid/ideal/master.svg)](https://coveralls.io/r/inventid/ideal?branch=master)|
+| Develop |[![Build Status](https://travis-ci.org/inventid/ideal.svg?branch=develop)](https://travis-ci.org/inventid/ideal)|[![Coverage Status](http://img.shields.io/coveralls/inventid/ideal/develop.svg)](https://coveralls.io/r/inventid/ideal?branch=develop)|
 
 ## What is it?
 

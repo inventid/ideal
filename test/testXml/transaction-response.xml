@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AcquirerTrxRes xmlns="http://www.idealdesk.com/Message" version="1.1.0">
+  <createDateTimeStamp>2001-12-17T09:30:47.0Z</createDateTimeStamp>
+  <Acquirer>
+    <acquirerID>1545</acquirerID>
+  </Acquirer>
+  <Issuer>
+    <issuerAuthenticationURL>https://ideal.example.com/long_service_url?X009=BETAAL&amp;X010=20
+    </issuerAuthenticationURL>
+  </Issuer>
+  <Transaction>
+    <transactionID>0001023456789112</transactionID>
+    <purchaseID>iDEAL-aankoop 21</purchaseID>
+  </Transaction>
+</AcquirerTrxRes>

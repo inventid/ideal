@@ -140,7 +140,8 @@ module Ideal
 
       a= post_data request_url, x, DirectoryResponse
 
-      $stderr.write("REQ: #{x} RES: #{a.response}")
+      log('REQ',x)
+      log('RES',a.response)
       a
     end
 
@@ -190,7 +191,7 @@ module Ideal
     # See the Gateway class description for a more elaborate example.
     def setup_purchase(money, options)
       req = build_transaction_request(money, options)
-      $stderr.write(req)
+      log('purchase', req)
       resp = post_data request_url, req, TransactionResponse
       #raise SecurityError, "The message could not be verified" if !resp.verified?
       resp
@@ -214,9 +215,9 @@ module Ideal
     # See the Gateway class description for a more elaborate example.
     def capture(transaction_id)
       a = build_status_request(:transaction_id => transaction_id)
-      $stderr.write("REQ: #{a}")
+      log('REQ', a)
       b = post_data request_url, a, StatusResponse
-      $stderr.write("RES: #{b.response}")
+      log('RES', b)
       b
     end
 

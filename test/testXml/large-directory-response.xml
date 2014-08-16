@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DirectoryRes xmlns="http://www.idealdesk.com/Message" version="1.1.0">
+  <createDateTimeStamp>2001-12-17T09:30:47.0Z</createDateTimeStamp>
+  <Acquirer>
+    <acquirerID>0245</acquirerID>
+  </Acquirer>
+  <Directory>
+    <directoryDateTimeStamp>2004-11-10T10:15:12.145Z</directoryDateTimeStamp>
+    <Issuer>
+      <issuerID>1006</issuerID>
+      <issuerName>ABN AMRO Bank</issuerName>
+      <issuerList>Short</issuerList>
+    </Issuer>
+    <Issuer>
+      <issuerID>1003</issuerID>
+      <issuerName>Postbank</issuerName>
+      <issuerList>Short</issuerList>
+    </Issuer>
+    <Issuer>
+      <issuerID>1005</issuerID>
+      <issuerName>Rabobank</issuerName>
+      <issuerList>Short</issuerList>
+    </Issuer>
+    <Issuer>
+      <issuerID>1017</issuerID>
+      <issuerName>Asr bank</issuerName>
+      <issuerList>Long</issuerList>
+    </Issuer>
+    <Issuer>
+      <issuerID>1023</issuerID>
+      <issuerName>Van Lanschot</issuerName>
+      <issuerList>Long</issuerList>
+    </Issuer>
+  </Directory>
+</DirectoryRes>

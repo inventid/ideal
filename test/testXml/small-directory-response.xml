@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DirectoryRes xmlns="http://www.idealdesk.com/Message" version="1.1.0">
+  <createDateTimeStamp>2001-12-17T09:30:47.0Z</createDateTimeStamp>
+  <Acquirer>
+    <acquirerID>0245</acquirerID>
+  </Acquirer>
+  <Directory>
+    <directoryDateTimeStamp>2004-11-10T10:15:12.145Z</directoryDateTimeStamp>
+    <Issuer>
+      <issuerID>1006</issuerID>
+      <issuerName>ABN AMRO Bank</issuerName>
+      <issuerList>Short</issuerList>
+    </Issuer>
+  </Directory>
+</DirectoryRes>

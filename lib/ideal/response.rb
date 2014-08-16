@@ -20,7 +20,7 @@ module Ideal
       doc.remove_namespaces!
       @response = doc.root
       @success = !error_occured?
-      @test = options[:test]
+      @test = options[:test]?options[:test]:false
     end
 
     # Returns whether we're running in test mode
@@ -142,7 +142,7 @@ module Ideal
     private
 
     def error_occured?
-      @response.name == 'ErrorRes'
+      @response.name == 'AcquirerErrorRes'
     end
 
     def text(path)
@@ -158,7 +158,7 @@ module Ideal
     # Returns the URL to the issuer’s page where the consumer should be
     # redirected to in order to perform the payment.
     def service_url
-      CGI::unescapeHTML(text('//issuerAuthenticationURL'))
+      CGI::unescapeHTML(text('//issuerAuthenticationURL')).strip
     end
 
     def verified?
@@ -219,8 +219,8 @@ module Ideal
     end
 
     # Returns the bankaccount number when the transaction was successful.
-    def consumer_account_number
-      text('//consumerAccountNumber')
+    def consumer_iban
+      text('//consumerIBAN')
     end
 
     # Returns the name on the bankaccount of the customer when the 
@@ -229,10 +229,10 @@ module Ideal
       text('//consumerName')
     end
 
-    # Returns the city on the bankaccount of the customer when the
-    # transaction was successful.
-    def consumer_city
-      text('//consumerCity')
+    # Returns the BIC of the bankaccount of the customer when the
+    # transaction was succesfull
+    def consumer_bic
+      text('//consumerBIC')
     end
 
     private
@@ -260,8 +260,8 @@ module Ideal
     #
     #   gateway.issuers.list # => [{ :id => '1006', :name => 'ABN AMRO Bank' }]
     def list
-      @response.xpath("//Issuer").map do |issuer|
-        { :id => issuer.xpath("//issuerID")[0].text(), :name => issuer.xpath("//issuerName")[0].text() }
+      @response.xpath("//Issuer").map.with_index do |issuer, i|
+        { :id => issuer.xpath("//issuerID")[i].text(), :name => issuer.xpath("//issuerName")[i].text() }
       end
     end
   end

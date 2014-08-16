@@ -3,7 +3,7 @@ rvm:
 - 2.1.2
 - 2.1.0
 - 2.0.0
-script: bundle exec rspec test/test.rb
+script: bundle exec rspec test/test.rb test/remote-test.rb
 notifications:
   email: false
   hipchat:
