@@ -165,24 +165,25 @@ class GeneralTest
       end
     end
 
-=begin
+#=begin
     describe '#send' do
       it 'generates a correct signature' do
         sha256 = OpenSSL::Digest::SHA256.new
-        #allow_any_instance_of(OpenSSL::Digest::SHA256).to receive(:new).and_return(sha256)
-        xml = Nokogiri::XML::Builder.new do |xml|
+        allow_any_instance_of(OpenSSL::Digest::SHA256).to receive(:new).and_return(sha256)
+        xml1 = Nokogiri::XML::Builder.new do |xml|
           xml.request do |innerxml|
             xml.content 'signature test'
             @gateway.send(:sign!, innerxml)
           end
         end
-        signature_value = @gateway.send(:signature_value, xml.doc)
-        signature = Ideal::Gateway.private_key.sign(sha256, xml.doc)
+        signature_value = @gateway.send(:signature_value, xml1.doc)
+        xml2 = xml1.doc.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
+        signature = Ideal::Gateway.private_key.sign(sha256, xml2)
         expected_signature_value = strip_whitespace(Base64.encode64(signature))
         expect(signature_value).to eq(expected_signature_value)
       end
     end
-=end
+#=end
 
     describe '#send' do
       it 'generates a correct fingerprint' do
