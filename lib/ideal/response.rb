@@ -182,11 +182,6 @@ module Ideal
       text('//purchaseID')
     end
 
-    def signedinfo
-      node = @response.xpath("//SignedInfo")[0]
-      canonical = node.canonicalize(Nokogiri::XML::XML_C14N_EXCLUSIVE_1_0)
-    end
-
     def signature
       Base64.decode64(text('//SignatureValue'))
     end
@@ -240,6 +235,10 @@ module Ideal
       text('//consumerBIC')
     end
 
+    def signature
+      Base64.decode64(text('//SignatureValue'))
+    end
+
     private
 
     # Checks if no errors occured _and_ if the message was authentic.
@@ -247,15 +246,8 @@ module Ideal
       !error_occured? && status == :success && verified?
     end
 
-    # The message that we need to verify the authenticity.
-    def message
-      text('//createDateTimeStamp') + text('//transactionID') + text('//status') + text('//consumerAccountNumber')
-    end
-
-    def signature
-      Base64.decode64(text('//SignatureValue'))
-    end
   end
+
 
   # An instance of DirectoryResponse is returned from
   # Gateway#issuers which returns the list of issuers available at the

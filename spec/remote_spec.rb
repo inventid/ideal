@@ -44,6 +44,7 @@ class Idealtest
         expect(response.service_url).not_to be nil
         expect(response.transaction_id).not_to be nil
         expect(response.order_id).to eq(@valid_options[:order_id])
+        expect(response.verified?).to be true
       end
     end
 
