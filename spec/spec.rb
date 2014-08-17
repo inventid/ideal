@@ -12,11 +12,6 @@ def strip_whitespace(str)
   str.gsub('/\s/m', '')
 end
 
-def strip_xml_whitespace(str)
-  str.gsub('/\>(\s)*\</m', '').strip
-end
-
-
 class GeneralMethodTest
   describe Ideal do
 
