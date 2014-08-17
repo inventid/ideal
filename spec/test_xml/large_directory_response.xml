@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DirectoryRes xmlns="http://www.idealdesk.com/Message" version="1.1.0">
+<DirectoryRes xmlns="http://www.idealdesk.com/Message" version="3.3.1">
   <createDateTimeStamp>2001-12-17T09:30:47.0Z</createDateTimeStamp>
   <Acquirer>
     <acquirerID>0245</acquirerID>
