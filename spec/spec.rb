@@ -429,8 +429,6 @@ class ResponseTest
 
         expect(setup_purchase_response).to be_a Ideal::TransactionResponse
 
-        expect(setup_purchase_response.verified?).to be true
-
         expect(setup_purchase_response.service_url).to eq('https://ideal.example.com/long_service_url?X009=BETAAL&X010=20')
 
         expect(setup_purchase_response.transaction_id).to eq('0001023456789112')
@@ -453,8 +451,7 @@ class ResponseTest
       setup_purchase_response = gateway.setup_purchase(4321, VALID_PURCHASE_OPTIONS)
 
       expect(setup_purchase_response).to be_a(Ideal::TransactionResponse)
-      expect(setup_purchase_response.verified?).to be true
-
+      
       expect(setup_purchase_response.service_url).to eq('https://ideal.example.com/long_service_url?X009=BETAAL&X010=20')
 
       expect(setup_purchase_response.transaction_id).to eq('0001023456789112')
