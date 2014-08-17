@@ -60,7 +60,7 @@ class Idealtest
 
     describe 'valid requests but incorrectly signed' do
       it 'should be rejected' do
-        allow_any_instance_of(Ideal::SignedDocument).to receive(:validate).and_return(false)
+        allow_any_instance_of(Xmldsig::SignedDocument).to receive(:validate).and_return(false)
         response = capture_transaction(:success)
 
         expect(response.verified?).to be false

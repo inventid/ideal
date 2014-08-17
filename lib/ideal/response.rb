@@ -167,7 +167,7 @@ module Ideal
     end
 
     def verified?
-      signed_document = SignedDocument.new(@body)
+      signed_document = Xmldsig::SignedDocument.new(@body)
       @verified ||= signed_document.validate(Ideal::Gateway.ideal_certificate)
     end
 
@@ -219,7 +219,7 @@ module Ideal
     # Returns whether or not the authenticity of the message could be
     # verified.
     def verified?
-      signed_document = SignedDocument.new(@body)
+      signed_document = Xmldsig::SignedDocument.new(@body)
       @verified ||= signed_document.validate(Ideal::Gateway.ideal_certificate)
     end
 
