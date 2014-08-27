@@ -5,14 +5,10 @@ require 'net/https'
 require 'base64'
 
 module Ideal
-  # === Response classes
+  # The base class for all iDEAL response classes.
   #
-  # * Response
-  # * TransactionResponse
-  # * StatusResponse
-  # * DirectoryResponse
-  #
-  # See the Response class for more information on errors.
+  # Note that if the iDEAL system is under load it will _not_ allow more
+  # then two retries per request.
   class Gateway
     LANGUAGE = 'nl'
     CURRENCY = 'EUR'

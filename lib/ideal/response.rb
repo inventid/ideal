@@ -6,10 +6,14 @@ require 'base64'
 #require 'rexml/document'
 
 module Ideal
-  # The base class for all iDEAL response classes.
+  # === Response classes
   #
-  # Note that if the iDEAL system is under load it will _not_ allow more
-  # then two retries per request.
+  # * Response
+  # * TransactionResponse
+  # * StatusResponse
+  # * DirectoryResponse
+  #
+  # See the Response class for more information on errors.
   class Response
     attr_accessor :response
 
