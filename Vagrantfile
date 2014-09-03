@@ -15,8 +15,6 @@ else
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-#  config.vm.box     = "inventid-neo-trusty64-v1"
-#  config.vm.box_url = "http://internal.inventid.net.s3.amazonaws.com/neo-local-images/neo-local.in-ventid.net-2014.07.28-v1.box"
   config.vm.box     = "trusty64"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
   config.vm.provider :virtualbox do |vb|
