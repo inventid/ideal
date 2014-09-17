@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "ideal/version"
 
 Gem::Specification.new do |s|
-  s.name = %q{ideal}
+  s.name 	 = %q{ideal-payment}
   s.version      = Ideal::VERSION
   s.authors      = ["Rogier Slag"]
   s.description  = %q{iDEALv3 payment gateway (see http://www.ideal.nl)}
