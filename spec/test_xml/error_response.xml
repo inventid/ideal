@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AcquirerErrorRes xmlns="http://www.idealdesk.com/Message" version="3.3.1">
+  <createDateTimeStamp>2001-12-17T09:30:47.0Z</createDateTimeStamp>
+  <Error>
+    <errorCode>SO1000</errorCode>
+    <errorMessage>Failure in system</errorMessage>
+    <errorDetail>System generating error: issuer</errorDetail>
+    <suggestedAction></suggestedAction>
+    <suggestedExpirationPeriod></suggestedExpirationPeriod>
+    <consumerMessage>Betalen met iDEAL is nu niet mogelijk.</consumerMessage>
+  </Error>
+</AcquirerErrorRes>

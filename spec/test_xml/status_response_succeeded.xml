@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AcquirerStatusRes xmlns="http://www.idealdesk.com/Message" version="3.3.1">
+  <createDateTimeStamp>2001-12-17T09:30:47.0Z</createDateTimeStamp>
+  <Acquirer>
+    <acquirerID>1234</acquirerID>
+  </Acquirer>
+  <Transaction>
+    <transactionID>0001023456789112</transactionID>
+    <status>Success</status>
+    <consumerName>Onderheuvel</consumerName>
+    <consumerAccountNumber>0949298989</consumerAccountNumber>
+    <consumerCity>DEN HAAG</consumerCity>
+  </Transaction>
+  <Signature>
+    <signatureValue>
+      db82/jpJRvKQKoiDvu33X0yoDAQpayJOaW2Y8zbR1qk1i3epvTXi+6g+QVBY93YzGv4w+Va+vL3uNmzyRjYsm2309d1CWFVsn5Mk24NLSvhYfwVHEpznyMqizALEVUNSoiSHRkZUDfXowBAyLT/tQVGbuUuBj+TKblY826nRa7U=
+    </signatureValue>
+    <fingerprint>1E15A00E3D7DF085768749D4ABBA3284794D8AE9</fingerprint>
+  </Signature>
+</AcquirerStatusRes>
