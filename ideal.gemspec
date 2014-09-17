@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description  = %q{iDEALv3 payment gateway (see http://www.ideal.nl)}
   s.summary      = %q{iDEALv3 payment gateway}
   s.email        = %q{rogier@inventid.nl}
-
+  s.licenses    = ['MIT']
   s.homepage     = %q{http://opensource.inventid.nl/ideal}
 
   s.extra_rdoc_files = [
