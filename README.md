@@ -1,5 +1,7 @@
 [![inventid logo](https://s3-eu-west-1.amazonaws.com/static-inventid-nl/content/img/logo.png)](http://opensource.inventid.nl)
 
+[![Gem Version](https://badge.fury.io/rb/ideal-payment.svg)](http://badge.fury.io/rb/ideal-payment)
+
 # Ideal
 | Branch | Build status | Code coverage |
 |---|---|---|

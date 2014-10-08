@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency             "nokogiri"
   s.add_dependency             "nap"
+  s.add_dependency	       "xmldsig"
   s.add_development_dependency "mocha"
   s.add_development_dependency "rspec"
 
