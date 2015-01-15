@@ -16,7 +16,10 @@ And now you can use it too!
 
 ## How to use it?
 
-Using it is quite simple, you can simply clone the code and then require it (_we plan to release a gem later_).
+Using it is quite simple, you can simply clone the code and then require it.
+Alternatively you may use the gem `ideal-payment` (https://rubygems.org/gems/ideal-payment).
+
+When using in live, also set `Ideal::Gateway.environment = :live`
 
 ### Preparing certificates
 
@@ -29,7 +32,7 @@ Replace _PASSWORD_ with your actual password.
 
 ````bash
 openssl genrsa -aes128 -out private.key -passout pass:PASSWORD 2048
-openssl req -x509 -new -key private.key -passin pass:PASSWORD -days 1825 -out certificate.cer
+openssl req -x509 -sha256 -new -key private.key -passin pass:PASSWORD -days 1825 -out certificate.cer
 ````
 
 ### Using a fixture
