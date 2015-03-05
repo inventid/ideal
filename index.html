@@ -31,17 +31,21 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p><a href="http://opensource.inventid.nl"><img src="https://s3-eu-west-1.amazonaws.com/static-inventid-nl/content/img/logo.png" alt="inventid logo"></a></p>
+        <p><a href="http://opensource.inventid.nl"><img src="https://cdn.inventid.nl/assets/logo-horizontally-ba8ae38ab1f53863fa4e99b977eaa1c7.png" alt="inventid logo"></a></p>
+
+<p><a href="http://badge.fury.io/rb/ideal-payment"><img src="https://badge.fury.io/rb/ideal-payment.svg" alt="Gem Version"></a></p>
 
 <h1>
-<a name="ideal" class="anchor" href="#ideal"><span class="octicon octicon-link"></span></a>Ideal</h1>
+<a id="ideal" class="anchor" href="#ideal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ideal</h1>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Branch</th>
 <th>Build status</th>
 <th>Code coverage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>Master</td>
@@ -54,20 +58,25 @@
 <td><a href="https://coveralls.io/r/inventid/ideal?branch=develop"><img src="http://img.shields.io/coveralls/inventid/ideal/develop.svg" alt="Coverage Status"></a></td>
 </tr>
 </tbody>
-</table><h2>
-<a name="what-is-it" class="anchor" href="#what-is-it"><span class="octicon octicon-link"></span></a>What is it?</h2>
+</table>
+
+<h2>
+<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is it?</h2>
 
 <p>Ideal is a simple Ruby 2.1 compliant gateway to contact any banks using the Dutch iDeal protocol.
 Since there was no decent one available, we decided to develop our own.
 And now you can use it too!</p>
 
 <h2>
-<a name="how-to-use-it" class="anchor" href="#how-to-use-it"><span class="octicon octicon-link"></span></a>How to use it?</h2>
+<a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use it?</h2>
 
-<p>Using it is quite simple, you can simply clone the code and then require it (<em>we plan to release a gem later</em>).</p>
+<p>Using it is quite simple, you can simply clone the code and then require it.
+Alternatively you may use the gem <code>ideal-payment</code> (<a href="https://rubygems.org/gems/ideal-payment">https://rubygems.org/gems/ideal-payment</a>).</p>
+
+<p>When using in live, also set <code>Ideal::Gateway.environment = :live</code></p>
 
 <h3>
-<a name="preparing-certificates" class="anchor" href="#preparing-certificates"><span class="octicon octicon-link"></span></a>Preparing certificates</h3>
+<a id="preparing-certificates" class="anchor" href="#preparing-certificates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing certificates</h3>
 
 <p>iDeal requires client certificates.
 You have to generate these yourself (or buy one from a Certificate Authority, but that's just wasting money in this case).
@@ -77,104 +86,97 @@ Additionally you need the certificate from your acquirer, which is supplied thro
 Replace <em>PASSWORD</em> with your actual password.</p>
 
 <div class="highlight highlight-bash"><pre>openssl genrsa -aes128 -out private.key -passout pass:PASSWORD 2048
-openssl req -x509 -new -key private.key -passin pass:PASSWORD -days <span class="m">1825</span> -out certificate.cer
-</pre></div>
+openssl req -x509 -sha256 -new -key private.key -passin pass:PASSWORD -days 1825 -out certificate.cer</pre></div>
 
 <h3>
-<a name="using-a-fixture" class="anchor" href="#using-a-fixture"><span class="octicon octicon-link"></span></a>Using a fixture</h3>
+<a id="using-a-fixture" class="anchor" href="#using-a-fixture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using a fixture</h3>
 
 <p>Fixtures are a great way not to have all these constants in your code, a server administrator may even override them with tools as Puppet.</p>
 
 <p>The fixture is equal to the one in the test.</p>
 
-<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">acquirer</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">rabobank</span>
-  <span class="l-Scalar-Plain">merchant_id</span><span class="p-Indicator">:</span> <span class="s">'002054205'</span>
-  <span class="l-Scalar-Plain">passphrase</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">wachtwoord</span>
-  <span class="l-Scalar-Plain">private_key_file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">../certs/bestandsnaam.key</span>
-  <span class="l-Scalar-Plain">private_certificate_file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">../certs/bestandsnaam.cer</span>
-  <span class="l-Scalar-Plain">ideal_certificate_file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">../certs/ideal.cer</span>
-</pre></div>
+<div class="highlight highlight-yaml"><pre><span class="pl-s1"><span class="pl-ent">default:</span></span>
+  <span class="pl-s1"><span class="pl-ent">acquirer:</span> <span class="pl-s1">rabobank</span></span>
+  <span class="pl-s1"><span class="pl-ent">merchant_id:</span> <span class="pl-s1"><span class="pl-pds">'</span>002054205<span class="pl-pds">'</span></span></span>
+  <span class="pl-s1"><span class="pl-ent">passphrase:</span> <span class="pl-s1">wachtwoord</span></span>
+  <span class="pl-s1"><span class="pl-ent">private_key_file:</span> <span class="pl-s1">../certs/bestandsnaam.key</span></span>
+  <span class="pl-s1"><span class="pl-ent">private_certificate_file:</span> <span class="pl-s1">../certs/bestandsnaam.cer</span></span>
+  <span class="pl-s1"><span class="pl-ent">ideal_certificate_file:</span> <span class="pl-s1">../certs/ideal.cer</span></span></pre></div>
 
 <p>which can be later loaded with the following code</p>
 
-<div class="highlight highlight-ruby"><pre><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">'fixtures.yml'</span><span class="p">)</span>
-<span class="n">fixtures</span> <span class="o">||=</span> <span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
-<span class="n">fixture</span> <span class="o">=</span> <span class="n">fixtures</span><span class="o">[</span><span class="n">key</span><span class="o">]</span> <span class="o">||</span> <span class="k">raise</span><span class="p">(</span><span class="no">StandardError</span><span class="p">,</span> <span class="s2">"No fixture data was found for key '</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">passphrase</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">'passphrase'</span><span class="p">)</span>
-  <span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">passphrase</span> <span class="o">=</span> <span class="n">passphrase</span>
-<span class="k">end</span>
-<span class="n">fixture</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span> <span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">="</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-ruby"><pre>file <span class="pl-k">=</span> <span class="pl-s3">File</span>.join(<span class="pl-s3">File</span>.dirname(<span class="pl-v">__FILE__</span>), <span class="pl-s1"><span class="pl-pds">'</span>fixtures.yml<span class="pl-pds">'</span></span>)
+fixtures <span class="pl-k">||=</span> <span class="pl-s3">YAML</span>.load(<span class="pl-s3">File</span>.read(file))
+fixture <span class="pl-k">=</span> fixtures[key] <span class="pl-k">||</span> <span class="pl-k">raise</span>(<span class="pl-vo">StandardError</span>, <span class="pl-s1"><span class="pl-pds">"</span>No fixture data was found for key '<span class="pl-pse">#{</span><span class="pl-s2">key</span><span class="pl-pse"><span class="pl-s2">}</span></span>'<span class="pl-pds">"</span></span>)
+<span class="pl-k">if</span> passphrase <span class="pl-k">=</span> fixture.delete(<span class="pl-s1"><span class="pl-pds">'</span>passphrase<span class="pl-pds">'</span></span>)
+  <span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.passphrase <span class="pl-k">=</span> passphrase
+<span class="pl-k">end</span>
+fixture.each { |<span class="pl-vo">key</span>, <span class="pl-vo">value</span>| <span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.send(<span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pse">#{</span><span class="pl-s2">key</span><span class="pl-pse"><span class="pl-s2">}</span></span>=<span class="pl-pds">"</span></span>, value) }</pre></div>
 
 <h3>
-<a name="not-using-a-fixture" class="anchor" href="#not-using-a-fixture"><span class="octicon octicon-link"></span></a>Not using a fixture</h3>
+<a id="not-using-a-fixture" class="anchor" href="#not-using-a-fixture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Not using a fixture</h3>
 
 <p>Well, also an option.
 Codewise it might even be a bit cleaner <img class="emoji" title=":wink:" alt=":wink:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f609.png" height="20" width="20" align="absmiddle"> although deployment is harder</p>
 
-<div class="highlight highlight-ruby"><pre><span class="c1"># Other banks preloaded are :abnamro and :rabobank</span>
-<span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">acquirer</span> <span class="o">=</span> <span class="ss">:ing</span>
-<span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">merchant_id</span> <span class="o">=</span> <span class="s1">'00123456789'</span>
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># Other banks preloaded are :abnamro and :rabobank</span>
+<span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.acquirer <span class="pl-k">=</span> <span class="pl-c1">:ing</span>
+<span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.merchant_id <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>00123456789<span class="pl-pds">'</span></span>
 
-<span class="c1"># Maybe you'd like another location</span>
-<span class="n">ideal_directory</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span> <span class="o">+</span> <span class="s1">'config/ideal'</span>
-<span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">passphrase</span> <span class="o">=</span> <span class="s1">'the_passphrase'</span>
-<span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">private_key_file</span>         <span class="o">=</span> <span class="n">ideal_directory</span> <span class="o">+</span> <span class="s1">'private_key.pem'</span>
-<span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">private_certificate_file</span> <span class="o">=</span> <span class="n">ideal_directory</span> <span class="o">+</span> <span class="s1">'private_certificate.cer'</span>
-<span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">ideal_certificate_file</span>   <span class="o">=</span> <span class="n">ideal_directory</span> <span class="o">+</span> <span class="s1">'ideal.cer'</span>
-</pre></div>
+<span class="pl-c"># Maybe you'd like another location</span>
+ideal_directory <span class="pl-k">=</span> <span class="pl-s3">Rails</span>.root <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span>config/ideal<span class="pl-pds">'</span></span>
+<span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.passphrase <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>the_passphrase<span class="pl-pds">'</span></span>
+<span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.private_key_file         <span class="pl-k">=</span> ideal_directory <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span>private_key.pem<span class="pl-pds">'</span></span>
+<span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.private_certificate_file <span class="pl-k">=</span> ideal_directory <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span>private_certificate.cer<span class="pl-pds">'</span></span>
+<span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.ideal_certificate_file   <span class="pl-k">=</span> ideal_directory <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span>ideal.cer<span class="pl-pds">'</span></span></pre></div>
 
 <h3>
-<a name="getting-a-list-of-issuers" class="anchor" href="#getting-a-list-of-issuers"><span class="octicon octicon-link"></span></a>Getting a list of issuers</h3>
+<a id="getting-a-list-of-issuers" class="anchor" href="#getting-a-list-of-issuers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting a list of issuers</h3>
 
 <p>This does the explicit call to your acquirer.
 Since the list of issuers hardly ever changes, you could better (performance-wise) cache the result for 48 hours.</p>
 
-<div class="highlight highlight-ruby"><pre><span class="no">Ideal</span><span class="o">::</span><span class="no">Gateway</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">issuers</span><span class="o">.</span><span class="n">list</span>
-</pre></div>
+<div class="highlight highlight-ruby"><pre><span class="pl-s3">Ideal</span>::<span class="pl-s3">Gateway</span>.<span class="pl-k">new</span>.issuers.list</pre></div>
 
 <h3>
-<a name="requesting-a-payment" class="anchor" href="#requesting-a-payment"><span class="octicon octicon-link"></span></a>Requesting a payment</h3>
+<a id="requesting-a-payment" class="anchor" href="#requesting-a-payment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requesting a payment</h3>
 
 <p>For this we need to send a Transaction Request to our acquirer with the following code</p>
 
-<div class="highlight highlight-ruby"><pre><span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="c1"># The customer has 30 minutes to complete the iDeal transaction (ISO 8601)</span>
-  <span class="ss">:expiration_period</span> <span class="o">=&gt;</span> <span class="s2">"PT30M"</span><span class="p">,</span>
-  <span class="ss">:issuer_id</span>         <span class="o">=&gt;</span> <span class="n">issuer_id</span><span class="p">,</span>
-  <span class="ss">:return_url</span>        <span class="o">=&gt;</span> <span class="n">return_url</span><span class="p">,</span>
-  <span class="ss">:order_id</span>          <span class="o">=&gt;</span> <span class="s1">'14'</span><span class="p">,</span>
-  <span class="ss">:description</span>       <span class="o">=&gt;</span> <span class="s1">'Probably awesomeness'</span><span class="p">,</span>
-  <span class="ss">:entrance_code</span>     <span class="o">=&gt;</span> <span class="s1">'secretCode'</span>
-<span class="p">}</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">ideal</span><span class="o">.</span><span class="n">setup_purchase</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="mo">00</span> <span class="p">,</span> <span class="n">ideal_attributes</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">success?</span>
-  <span class="c1"># Save the data, then redirect</span>
-  <span class="n">redirect_to</span> <span class="n">response</span><span class="o">.</span><span class="n">service_url</span>
-<span class="k">else</span>
-  <span class="c1"># Log something</span>
-<span class="k">end</span>
-</pre></div>
+<div class="highlight highlight-ruby"><pre>attributes <span class="pl-k">=</span> {
+  <span class="pl-c"># The customer has 30 minutes to complete the iDeal transaction (ISO 8601)</span>
+  <span class="pl-c1">:expiration_period</span> =&gt; <span class="pl-s1"><span class="pl-pds">"</span>PT30M<span class="pl-pds">"</span></span>,
+  <span class="pl-c1">:issuer_id</span>         =&gt; issuer_id,
+  <span class="pl-c1">:return_url</span>        =&gt; return_url,
+  <span class="pl-c1">:order_id</span>          =&gt; <span class="pl-s1"><span class="pl-pds">'</span>14<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">:description</span>       =&gt; <span class="pl-s1"><span class="pl-pds">'</span>Probably awesomeness<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">:entrance_code</span>     =&gt; <span class="pl-s1"><span class="pl-pds">'</span>secretCode<span class="pl-pds">'</span></span>
+}
+response <span class="pl-k">=</span> ideal.setup_purchase(<span class="pl-c1">5.00</span> , ideal_attributes)
+<span class="pl-k">if</span> response.success?
+  <span class="pl-c"># Save the data, then redirect</span>
+  redirect_to response.service_url
+<span class="pl-k">else</span>
+  <span class="pl-c"># Log something</span>
+<span class="pl-k">end</span></pre></div>
 
 <h3>
-<a name="requesting-the-payment-status" class="anchor" href="#requesting-the-payment-status"><span class="octicon octicon-link"></span></a>Requesting the payment status</h3>
+<a id="requesting-the-payment-status" class="anchor" href="#requesting-the-payment-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requesting the payment status</h3>
 
 <p>The merchant has the obligation to request a final status once the timeout has expired.</p>
 
-<div class="highlight highlight-ruby"><pre><span class="n">status</span> <span class="o">=</span> <span class="n">ideal</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="n">transaction_id</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">status</span><span class="o">.</span><span class="n">success?</span>
-  <span class="c1"># Save the data as paid</span>
-<span class="k">end</span>
-</pre></div>
+<div class="highlight highlight-ruby"><pre>status <span class="pl-k">=</span> ideal.capture(transaction_id)
+<span class="pl-k">if</span> status.success?
+  <span class="pl-c"># Save the data as paid</span>
+<span class="pl-k">end</span></pre></div>
 
 <h2>
-<a name="how-to-suggest-improvements" class="anchor" href="#how-to-suggest-improvements"><span class="octicon octicon-link"></span></a>How to suggest improvements?</h2>
+<a id="how-to-suggest-improvements" class="anchor" href="#how-to-suggest-improvements" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to suggest improvements?</h2>
 
 <p>We are still actively developing Ideal for our internal use, but we would already love to hear your feedback. In case you have some great ideas, you may just <a href="https://github.com/inventid/ideal/issues/new">open an issue</a>. Be sure to check beforehand whether the same issue does not already exist.</p>
 
 <h2>
-<a name="how-can-i-contribute" class="anchor" href="#how-can-i-contribute"><span class="octicon octicon-link"></span></a>How can I contribute?</h2>
+<a id="how-can-i-contribute" class="anchor" href="#how-can-i-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>How can I contribute?</h2>
 
 <p>We feel contributions from the community are extremely worthwhile. If you use Ideal in production and make some modification, please share it back to the community. You can simply <a href="https://github.com/inventid/ideal/fork">fork the repository</a>, commit your changes to your code and create a pull request back to this repository.</p>
 
@@ -190,8 +192,10 @@ Since the list of issuers hardly ever changes, you could better (performance-wis
 </li>
 <li>Provisioning takes around 5 minutes on my PC. If you want it to be faster you can use the <code>userConfig.json</code> file in the root and override the specific settings for memory and CPU.</li>
 <li>The Vagrant machine provisions and you can easily work with us. Enter <code>vagrant ssh</code> to get shell access to the machine. In case you are done with it, simply enter <code>vagrant destroy</code>. You won't lose any changes to your git repository when this happens.</li>
-</ol><h2>
-<a name="collaborators" class="anchor" href="#collaborators"><span class="octicon octicon-link"></span></a>Collaborators</h2>
+</ol>
+
+<h2>
+<a id="collaborators" class="anchor" href="#collaborators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collaborators</h2>
 
 <p>We would like to thank the developers which contributed to Ideal, both big and small.</p>
 
