@@ -1,4 +1,4 @@
-[![inventid logo](https://s3-eu-west-1.amazonaws.com/static-inventid-nl/content/img/logo.png)](http://opensource.inventid.nl)
+[![inventid logo](https://cdn.inventid.nl/assets/logo-horizontally-ba8ae38ab1f53863fa4e99b977eaa1c7.png)](http://opensource.inventid.nl)
 
 [![Gem Version](https://badge.fury.io/rb/ideal-payment.svg)](http://badge.fury.io/rb/ideal-payment)
 
